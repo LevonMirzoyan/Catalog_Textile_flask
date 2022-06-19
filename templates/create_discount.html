@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Создать новую запись о скидке {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">название</label>
+        <input type="text" name="title"
+               placeholder="Post prod" class="form-control"
+               value="{{ request.form['title'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="value">величина скидки</label>
+        <input type="text" name="value"
+               placeholder="Post prod" class="form-control"
+               value="{{ request.form['value'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="start">начало скидки</label>
+        <input type="text" name="start"
+               placeholder="Post prod" class="form-control"
+               value="{{ request.form['start'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="finish">конец скидки</label>
+        <input type="text" name="finish"
+               placeholder="Post prod" class="form-control"
+               value="{{ request.form['finish'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

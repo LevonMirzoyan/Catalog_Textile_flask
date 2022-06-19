@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Создать новую запись о ткани {% endblock %}</h1>
+
+<form method="post">
+<label for="producer">producer</label>
+    <input
+        list="list"
+        name="producer"
+        class="form-control"
+        id="страна_производитель"
+        type="text"
+        placeholder="страна_производитель:">
+        <datalist id="list">
+            {% for opt in prod %}
+                <option value="{{ opt['страна_производитель'] }}">
+            {% endfor %}
+        </datalist> </br>
+  <label for="discount">discount</label>
+    <input
+        list="discounts"
+        name="discount"
+        class="form-control"
+        id="название"
+        type="text"
+        placeholder="скидка:">
+        <datalist id="discounts">
+            {% for disc in disc %}
+                <option value="{{ disc['название'] }}">
+            {% endfor %}
+        </datalist>
+
+ <!--
+    <input id="producer" name="producer" type="text" placeholder="Enter producer" class="textbox"/></br></br>
+    <input id="discount" name="discount" type="text" placeholder="Enter discount" class="textbox"/></br></br>
+     <div class="form-group">
+        <label for="title">producer</label>
+        <input type="text" name="title"
+               placeholder="producer" class="form-control"
+               value="{{ request.form['title'] }}"></input>
+    </div>                 -->
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title"
+               placeholder="Post title" class="form-control"
+               value="{{ request.form['title'] }}">
+
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="price">price</label>
+        <input type="text" name="price"
+               placeholder="Post price" class="form-control"
+               value="{{ request.form['price'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="colour">colour</label>
+        <input type="text" name="colour"
+               placeholder="Post colour" class="form-control"
+               value="{{ request.form['colour'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="purpose">purpose</label>
+        <input type="text" name="purpose"
+               placeholder="Post purpose" class="form-control"
+               value="{{ request.form['purpose'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="type">type</label>
+        <input type="text" name="type"
+               placeholder="Post type" class="form-control"
+               value="{{ request.form['type'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="width">width</label>
+        <input type="text" name="width"
+               placeholder="Post width" class="form-control"
+               value="{{ request.form['width'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="photo">photo</label>
+        <input type="text" name="photo"
+               placeholder="Post photo" class="form-control"
+               value="{{ request.form['photo'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </div>
+</form>
+{% endblock %}

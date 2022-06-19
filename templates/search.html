@@ -1,0 +1,109 @@
+  {% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Поиск  {% endblock %}</h1>
+<h7>(ВНИМАНИЕ поиск осуществляется только с ОДНИМ заполненым полем) </h7> <br> <br/>
+<form method="post">
+
+    <label for="материал">материал</label>
+    <input
+        list="list"
+        name="материал"
+        class="form-control"
+        id="материал"
+        type="text"
+        placeholder="материал:">
+        <datalist id="list">
+            {% for mater in mater %}
+                <option value="{{ mater['материал'] }}">
+            {% endfor %}
+        </datalist> <br>
+
+    <label for="назначение">назначение</label>
+    <input
+        list="lists"
+        name="назначение"
+        class="form-control"
+        id="назначение"
+        type="text"
+        placeholder="назначение:">
+        <datalist id="lists">
+            {% for purpose in purpose %}
+                <option value="{{ purpose['назначение'] }}">
+            {% endfor %}
+        </datalist> <br>
+
+     <label for="скидка">скидка</label>
+    <input
+        list="listss"
+        name="скидка"
+        class="form-control"
+        id="скидка"
+        type="text"
+        placeholder="скидка:">
+        <datalist id="listss">
+            {% for disc in disc %}
+                <option value="{{ disc['величина_скидки'] }}">
+            {% endfor %}
+        </datalist> <br>
+
+
+    <input id="мин_цена" name="мин_цена" type="text" placeholder="мин_цена" class="textbox"/><br><br/>
+    <input id="макс_цена" name="макс_цена" type="text" placeholder="макс_цена" class="textbox"/><br><br/>
+<div class="form-group">
+        <button type="submit" class="btn btn-primary">ПОИСК</button>
+    </div>
+
+     {% for post in post %}
+        <a href="{{ url_for('post', post_id=post['id_ткани']) }}">
+       <h2>{{ post['название_ткани'] }}</h2>
+            <h7>{{ post['цена_за_метр'] }} РУБЛЕЙ</h7><br>
+            </a>
+    <img src="{{post['фото_ткани']}}" />
+       <hr>
+    {% endfor %}
+    {% for post in nash %}
+        <a href="{{ url_for('post', post_id=post['id_ткани']) }}">
+       <h2>{{ post['название_ткани'] }}</h2>
+            <h7>{{ post['цена_за_метр'] }} РУБЛЕЙ</h7><br>
+            </a>
+    <img src="{{post['фото_ткани']}}" />
+       <hr>
+    {% endfor %}
+
+     {% for post in cash %}
+        <a href="{{ url_for('post', post_id=post['id_ткани']) }}">
+       <h2>{{ post['название_ткани'] }}</h2>
+            <h7>{{ post['цена_за_метр'] }} РУБЛЕЙ</h7><br>
+            </a>
+    <img src="{{post['фото_ткани']}}" />
+       <hr>
+    {% endfor %}
+
+    {% for post in dis %}
+        <a href="{{ url_for('post', post_id=post['id_ткани']) }}">
+       <h2>{{ post['название_ткани'] }}</h2>
+            <h7>{{ post['цена_за_метр'] }} РУБЛЕЙ</h7> <br>
+            </a>
+    <img src="{{post['фото_ткани']}}" />
+       <hr>
+    {% endfor %}
+
+
+
+</form>
+<hr>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Каталог тканей {% endblock %}</h1>
+
+    {% for post in allcloth %}
+
+        <a href="#">
+            <h2>Название_ткани {{ post['название_ткани'] }}</h2>
+            <h2>Цена за метр {{ post['цена_за_метр'] }}</h2>
+            <h2>Цвет {{ post['цвет'] }}</h2>
+            <h2>Назначение ткани {{ post['назначение_ткани'] }}</h2>
+            <h2>Тип ткани {{ post['тип_ткани'] }}</h2>
+            <h2>Производитель {{ post['страна_производитель'] }}</h2>
+            <h2>Скидка {{ post['название_скидки'] }}</h2>
+              <h2>Фото ткани {{ post['фото_ткани'] }}</h2>
+        </a>
+
+    <a href="{{ url_for('edit_cloth', id=post['id_ткани']) }}">
+            <span class="badge badge-warning">Изменить</span>
+        </a>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

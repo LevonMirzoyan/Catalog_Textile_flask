@@ -1,0 +1,124 @@
+  {% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Изменить запись о ткани"{{ post['title'] }}" {% endblock %}</h1>
+
+<form method="post">
+
+    <label for="producer">producer</label>
+    <input
+        list="list"
+        name="страна_производитель"
+        class="form-control"
+        id="страна_производитель"
+        type="text"
+        placeholder="{{ post['страна_производитель']}}">
+        <datalist id="list">
+            {% for opt in prod %}
+                <option value="{{ opt['страна_производитель'] }}">
+            {% endfor %}
+        </datalist> </br>
+  <label for="discount">discount</label>
+    <input
+        list="discounts"
+        name="название_скидки"
+        class="form-control"
+        id="название"
+        type="text"
+        placeholder="{{ post['название_скидки'] }}">
+        <datalist id="discounts">
+            {% for disc in disc %}
+                <option value="{{ disc['название']  }}">
+            {% endfor %}
+        </datalist>
+
+<!--    <input id="material" name="material" type="text" placeholder="Enter material" class="textbox"/></br></br>
+    <label for="страна_производитель">страна_производитель</label>
+    <input id="страна_производитель" name="страна_производитель" type="text"  placeholder="страна_производитель"  class="textbox"
+               value="{{ request.form['страна_производитель'] or post['страна_производитель'] }}"> </br></br>
+    <label for="название_скидки">название_скидки</label>
+    <input id="название_скидки" name="название_скидки" type="text"  placeholder="название_скидки" class="textbox"
+               value="{{ request.form['название_скидки'] or post['название_скидки'] }}"> </br></br>
+ -->
+    <div class="form-group">
+        <label for="название_ткани">название_ткани</label>
+        <input type="text" name="название_ткани"
+               placeholder="название_ткани" class="form-control"
+               value="{{ request.form['название_ткани'] or post['название_ткани'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="цена_за_метр">цена_за_метр</label>
+        <input type="text" name="цена_за_метр"
+               placeholder="цена_за_метр" class="form-control"
+               value="{{ request.form['цена_за_метр'] or post['цена_за_метр'] }}">
+
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="цвет">цвет</label>
+        <input type="text" name="цвет"
+               placeholder="цвет" class="form-control"
+               value="{{ request.form['цвет'] or post['цвет'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="назначение_ткани">назначение_ткани</label>
+        <input type="text" name="назначение_ткани"
+               placeholder="назначение_ткани" class="form-control"
+               value="{{ request.form['назначение_ткани'] or post['назначение_ткани'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="тип_ткани">тип_ткани</label>
+        <input type="text" name="тип_ткани"
+               placeholder="тип_ткани" class="form-control"
+               value="{{ request.form['тип_ткани'] or post['тип_ткани'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="ширина_ткани">ширина_ткани</label>
+        <input type="text" name="ширина_ткани"
+               placeholder="ширина_ткани" class="form-control"
+               value="{{ request.form['ширина_ткани'] or post['ширина_ткани'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="фото_ткани">фото_ткани</label>
+        <input type="text" name="фото_ткани"
+               placeholder="фото_ткани" class="form-control"
+               value="{{ request.form['фото_ткани'] or post['фото_ткани'] }}">
+
+        </input>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Изменить</button>
+    </div>
+</form>
+<hr>
+<form action="{{ url_for('delete_cloth', id=post['id_ткани']) }}" method="POST">
+    <input type="submit" value="Удалить запись"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Действительно вы хотите удалить эту запись?')">
+</form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

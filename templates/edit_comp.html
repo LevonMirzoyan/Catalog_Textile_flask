@@ -1,0 +1,77 @@
+  {% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Изменить запись о составе"{{ post['title'] }}" {% endblock %}</h1>
+
+<form method="post">
+
+    <label for="material">material</label>
+    <input
+        list="list"
+        name="материал"
+        class="form-control"
+        id="материал"
+        type="text"
+        placeholder="{{post['материал']}}">
+        <datalist id="list">
+            {% for mater in mater %}
+                <option value="{{ mater['материал'] }}">
+            {% endfor %}
+        </datalist> </br>
+  <label for="cloth">cloth</label>
+    <input
+        list="cloths"
+        name="название_ткани"
+        class="form-control"
+        id="название"
+        type="text"
+        placeholder="{{post['название_ткани']}}">
+        <datalist id="cloths">
+            {% for clot in clot %}
+                <option value="{{ clot['название'] }}">
+            {% endfor %}
+        </datalist>
+
+
+<!--    <input id="material" name="material" type="text" placeholder="Enter material" class="textbox"/></br></br>
+    <label for="название_ткани">название_ткани</label>
+    <input id="название_ткани" name="название_ткани" type="text"  placeholder="название_ткани"  class="textbox"
+               value="{{ request.form['название_ткани'] or post['название_ткани'] }}"> </br></br>
+    <label for="материал">материал</label>
+    <input id="материал" name="материал" type="text"  placeholder="материал" class="textbox"
+               value="{{ request.form['материал'] or post['материал'] }}"> </br></br>
+-->
+    <div class="form-group">
+        <label for="процентное_содержание_состава">процентное_содержание_состава</label>
+        <input type="text" name="процентное_содержание_состава"
+               placeholder="процентное_содержание_состава" class="form-control"
+               value="{{ request.form['процентное_содержание_состава'] or post['процентное_содержание_состава'] }}">
+
+        </input>
+    </div>
+
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Изменить</button>
+    </div>
+</form>
+<hr>
+<form action="{{ url_for('delete_comp', id=post['id_состава_ткани']) }}" method="POST">
+    <input type="submit" value="Удалить запись"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Действительно вы хотите удалить эту запись?')">
+</form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

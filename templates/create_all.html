@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><a> Страницы добавление записей</a> <br><br>
+
+<a class="nav-link" href="{{url_for('create_cloth')}}">Добавить ткань</a>
+<a class="nav-link" href="{{url_for('create_composition')}}">Добавить состав</a>
+<a class="nav-link" href="{{url_for('create_producer')}}">Добавить производителя</a>
+<a class="nav-link" href="{{url_for('create_material')}}">Добавить материал</a>
+<a class="nav-link" href="{{url_for('create_discount')}}">Добавить скидку</a> <br>
+
+<a> Страницы просмотра и редактирование записей</a> <br><br>
+
+<a class="nav-link" href="{{url_for('allcloth')}}">Ткань</a>
+<a class="nav-link" href="{{url_for('allcomposition')}}">Составы ткани</a>
+<a class="nav-link" href="{{url_for('allproducer')}}">Производители</a>
+<a class="nav-link" href="{{url_for('allmaterial')}}">Материалы</a>
+<a class="nav-link" href="{{url_for('alldiscount')}}">Скидки</a>
+
+
+{% endblock %}

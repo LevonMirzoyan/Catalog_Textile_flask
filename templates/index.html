@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1> Категории тканей </h1>
+
+
+
+<div class="container">
+    <div class="row">
+<div class="col-sm">
+<img src="{{'https://otvet.imgsmail.ru/download/194011692_9ad19991fa107a1afde1896535afd355_120x120.jpg'}}" />
+ <a class="nav-link" href="{{url_for('elegant')}}">   <p style="margin-left: 6px">Нарядные</p></a>
+ </div>
+    <div class="col-sm">
+<img src="{{'https://tekstil-k34.ru/upload/resize_cache/iblock/676/120_120_2/Screenshot_2_min.png'}}" />
+ <a class="nav-link" href="{{url_for('childish')}}">  <p style="margin-left: 13px"> Детские</p></a>
+</div>
+    <div class="col-sm">
+
+<img src="{{'https://tais.by/upload/ammina.optimizer/jpg/q80/upload/resize_cache/iblock/acc/120_120_1/accc9d1eb0d7fb0f849ce53470b28b08.jpg'}}" />
+ <a class="nav-link" href="{{url_for('costume')}}">Костюмные</a>
+
+   </div>
+  </div>
+</div>
+
+
+
+<h1>{% block title %} Каталог тканей {% endblock %}</h1>
+ <!--    <p>Выберите файл:</p>
+     <p><input type="search" list="opt['title']">
+     <datalist id="opt['title']">
+     {% for opt in option %}
+     <option value="{{ opt['title'] }}"></option>
+     {% endfor %}
+     </datalist>
+     </p> -->
+    {% for post in View %}
+
+        <a href="{{ url_for('post', post_id=post['id_ткани']) }}">
+            <h2>{{ post['название_ткани'] }}</h2>
+            <h7>{{ post['цена_за_метр'] }} РУБЛЕЙ</h7> <br>
+       <!--     <a  href="{{post['фото_ткани']}}">Фото ткани</a>   -->
+
+        </a>
+    <img src="{{post['фото_ткани']}}" />
+        <hr>
+    {% endfor %}
+
+{% endblock %}

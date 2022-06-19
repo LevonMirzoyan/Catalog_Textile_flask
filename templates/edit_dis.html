@@ -1,0 +1,57 @@
+  {% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Изменить запись о скидке "{{ post['название'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="название">название</label>
+        <input type="text" name="название"
+               placeholder="название" class="form-control"
+               value="{{ request.form['название'] or post['название'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="величина_скидки">величина скидки</label>
+        <input type="text" name="величина_скидки"
+               placeholder="величина_скидки" class="form-control"
+               value="{{ request.form['величина_скидки'] or post['величина_скидки']}}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="дата_начала_скидки">начало скидки</label>
+        <input type="text" name="дата_начала_скидки"
+               placeholder="дата_начала_скидки" class="form-control"
+               value="{{ request.form['дата_начала_скидки'] or post['дата_начала_скидки'] }}">
+
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="дата_конца_скидки">конец скидки</label>
+        <input type="text" name="дата_конца_скидки"
+               placeholder="дата_конца_скидки" class="form-control"
+               value="{{ request.form['дата_конца_скидки']  or post['дата_конца_скидки']}}">
+
+        </input>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Изменить</button>
+    </div>
+</form>
+<hr>
+<form action="{{ url_for('delete_dis', id=post['id_скидки']) }}" method="POST">
+    <input type="submit" value="Удалить запись"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Действительно вы хотите удалить эту запись?')">
+</form>
+{% endblock %}
+
+
+
+
+
+

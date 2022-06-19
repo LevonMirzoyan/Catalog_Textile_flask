@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Каталог тканей {% endblock %}</h1>
+
+    {% for post in allcomposition %}
+
+        <a href="#">
+            <h2>Название_ткани {{ post['название_ткани'] }}</h2>
+            <h2>Процентное содержание состава {{ post['процентное_содержание_состава'] }}</h2>
+            <h2>Материал {{ post['материал'] }}</h2>
+
+        </a>
+
+    <a href="{{ url_for('edit_comp', id=post['id_состава_ткани']) }}">
+            <span class="badge badge-warning">Изменить</span>
+        </a>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

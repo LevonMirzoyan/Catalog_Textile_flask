@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Каталог тканей {% endblock %}</h1>
+ <!--    <p>Выберите файл:</p>
+     <p><input type="search" list="opt['title']">
+     <datalist id="opt['title']">
+     {% for opt in option %}
+     <option value="{{ opt['title'] }}"></option>
+     {% endfor %}
+     </datalist>
+     </p> -->
+    {% for post in alldiscount %}
+
+        <a href="#">
+            <h2>Название {{ post['название'] }}</h2>
+            <h2>Величина скидки {{ post['величина_скидки'] }}</h2>
+            <h2>Начало скидки {{ post['дата_начала_скидки'] }}</h2>
+            <h2>Конец скидки {{ post['дата_конца_скидки'] }}</h2>
+        </a>
+
+    <a href="{{ url_for('edit_dis', id=post['id_скидки']) }}">
+            <span class="badge badge-warning">Изменить</span>
+        </a>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

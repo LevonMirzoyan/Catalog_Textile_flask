@@ -1,0 +1,32 @@
+ {% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}   {% endblock %}</h1>
+<h7>  </h7> <br> <br/>
+<form method="post">
+
+
+    {% for post in cost %}
+        <a href="{{ url_for('post', post_id=post['id_ткани']) }}">
+       <h2>{{ post['название_ткани'] }}</h2>
+            <h7>{{ post['цена_за_метр'] }} РУБЛЕЙ</h7> <br>
+            </a>
+    <img src="{{post['фото_ткани']}}" />
+       <hr>
+    {% endfor %}
+
+
+
+</form>
+<hr>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

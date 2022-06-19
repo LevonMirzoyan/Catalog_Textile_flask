@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Создать новую запись о составе ткани {% endblock %}</h1>
+
+<form method="post">
+    <label for="material">material</label>
+    <input
+        list="list"
+        name="material"
+        class="form-control"
+        id="материал"
+        type="text"
+        placeholder="страна_производитель:">
+        <datalist id="list">
+            {% for mater in mater %}
+                <option value="{{ mater['материал'] }}">
+            {% endfor %}
+        </datalist> </br>
+  <label for="cloth">cloth</label>
+    <input
+        list="cloths"
+        name="cloth"
+        class="form-control"
+        id="название"
+        type="text"
+        placeholder="скидка:">
+        <datalist id="cloths">
+            {% for clot in clot %}
+                <option value="{{ clot['название'] }}">
+            {% endfor %}
+        </datalist>
+
+
+
+
+
+    <!--
+    <input id="material" name="material" type="text" placeholder="Enter material" class="textbox"/></br></br>
+    <input id="cloth" name="cloth" type="text" placeholder="Enter cloth" class="textbox"/></br></br>
+    -->
+    <div class="form-group">
+        <label for="percentage">percentage</label>
+        <input type="text" name="percentage"
+               placeholder="Post percentage" class="form-control"
+               value="{{ request.form['percentage'] }}"></input>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </div>
+</form>
+{% endblock %}
